@@ -1,7 +1,9 @@
-export const post = async ({ url, body, success, failure, dispatch }) => {
+import fetch from 'isomorphic-fetch'
+
+const request = async ({ method, url, body, success, failure, dispatch }) => {
   try {
     const res = await fetch(url, {
-      method: 'POST',
+      method,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -13,3 +15,7 @@ export const post = async ({ url, body, success, failure, dispatch }) => {
     dispatch({ type: failure })
   }
 }
+
+export const callPost = params => request({ ...params, method: 'POST' })
+
+export const callGet = params => request({ ...params, method: 'GET' })

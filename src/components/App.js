@@ -15,7 +15,7 @@ const App = ({ user }) => (
   <Body>
     <Header />
     <Switch>
-      {user.token && <Route path="/" component={Home} />}
+      {user.uid && <Route path="/" component={Home} />}
       <Route path="/signup" component={Signup} />
       <Route path="/login" component={Login} />
       <Redirect to="/login" />

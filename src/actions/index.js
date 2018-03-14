@@ -1,9 +1,9 @@
 import { actionTypes as types, urls } from '../constants'
-import { post } from '../helpers'
+import { callGet, callPost } from '../helpers'
 
 export const signup = ({ email, password }) => dispatch => {
   dispatch({ type: types.SIGNUP_REQUEST })
-  post({
+  callPost({
     url: urls.SIGNUP,
     body: { email, password },
     success: types.SIGNUP_SUCCESS,
@@ -14,7 +14,7 @@ export const signup = ({ email, password }) => dispatch => {
 
 export const login = ({ email, password }) => dispatch => {
   dispatch({ type: types.LOGIN_REQUEST })
-  post({
+  callPost({
     url: urls.LOGIN,
     body: { email, password },
     success: types.LOGIN_SUCCESS,
@@ -23,17 +23,16 @@ export const login = ({ email, password }) => dispatch => {
   })
 }
 
-export const loginWithToken = () => (dispatch, getState) => {
-  const token = getState().user.token
+export const loginWithCookies = () => (dispatch, getState) => {
+  const uid = getState().user.uid
 
-  if (typeof token === 'undefined') return
+  if (typeof uid !== 'undefined') return
 
-  dispatch({ type: types.LOGIN_REQUEST })
-  post({
-    url: urls.LOGIN_WITH_TOKEN,
-    body: { token },
-    success: types.LOGIN_SUCCESS,
-    failure: types.LOGIN_FAILURE,
+  dispatch({ type: types.SESSION_REQUEST })
+  callGet({
+    url: urls.USER_UID,
+    success: types.SESSION_SUCCESS,
+    failure: types.SESSION_FAILURE,
     dispatch,
   })
 }

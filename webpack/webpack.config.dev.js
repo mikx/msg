@@ -33,6 +33,13 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+        PLATFORM_ENV: JSON.stringify('web'),
+        C9_HOSTNAME: JSON.stringify(process.env.C9_HOSTNAME),
+      },
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({

@@ -1,4 +1,4 @@
-import styled from 'emotion/react'
+import styled from 'react-emotion'
 import { Link } from 'react-router-dom'
 
 export const Body = styled.div`
@@ -48,7 +48,9 @@ export const Message = styled.h2`
   margin-top: 30vh;
 `
 
-export const Blue = styled.span`color: rgb(0, 128, 255);`
+export const Blue = styled.span`
+  color: rgb(0, 128, 255);
+`
 
 export const FormTitle = styled.h1`
   font-family: sans-serif;

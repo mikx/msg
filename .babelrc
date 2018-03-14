@@ -1,22 +1,22 @@
 {
   "presets": [
     [
-      "es2015",
+      "@babel/preset-env",
       {
         "modules": false
       }
     ],
-    "react",
-    "stage-0"
+    "@babel/preset-react",
+    "@babel/preset-stage-0"
   ],
   "plugins": [
     [
-      "emotion/babel", {
+      "emotion", {
         "inline": true
       }
     ],
     [
-      "transform-runtime", {
+      "@babel/plugin-transform-runtime", {
         "helpers": false,
         "polyfill": false
       },
