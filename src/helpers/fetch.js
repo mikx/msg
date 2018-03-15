@@ -2,15 +2,20 @@ import fetch from 'isomorphic-fetch'
 
 const request = async ({ method, url, body, success, failure, dispatch }) => {
   try {
-    const res = await fetch(url, {
+    const response = await fetch(url, {
       method,
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
+      credentials: 'include',
     })
-    const data = await res.json()
-    dispatch({ type: success, data })
+    if (response.ok) {
+      const data = await response.json()
+      dispatch({ type: success, data })
+    } else {
+      dispatch({ type: failure })
+    }
   } catch (e) {
     dispatch({ type: failure })
   }

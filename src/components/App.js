@@ -2,14 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
-import Async from 'react-code-splitting'
 
 import Login from './Auth/Login'
 import Signup from './Auth/Signup'
 import Header from './Header'
-import { Body } from './Styled'
+import Home from './Home'
 
-const Home = () => <Async load={import('./Home')} />
+import { Body } from './Styled'
 
 const App = ({ user }) => (
   <Body>

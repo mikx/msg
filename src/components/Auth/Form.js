@@ -16,11 +16,10 @@ const Form = ({ onSubmit }) => (
       type="password"
       name="password"
       placeholder="Password"
-      title="Type a strong password: aBC_123^"
-      pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$"
+      title="Type your password"
       required
     />
-    <Submit type="submit" value="Continue" />
+    <Submit type="submit" value="Submit" />
   </form>
 )
 

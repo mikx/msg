@@ -19,8 +19,7 @@ const Login = ({ user, login }) => {
     <div>
       <FormTitle>Login</FormTitle>
       <Form onSubmit={handleSubmit} />
-      <FooterLink to="/signup">{"You don't have an account ?"}</FooterLink>
-      {user.token && <Redirect to="/" />}
+      {user.uid && <Redirect to="/" />}
     </div>
   )
 }

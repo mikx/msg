@@ -5,8 +5,7 @@ import Github from './Github'
 
 const Header = () => (
   <div>
-    <Title>redux-react-starter</Title>
-    <Github />
+    <Title>Weave Messenger</Title>
   </div>
 )
 

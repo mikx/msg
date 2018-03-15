@@ -3,17 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import { Message, Blue } from './Styled'
+import OrgSelector from './OrgSelector'
 
 const Home = ({ user }) =>
-  user.token ? (
-    <Message>
-      {"You're logged in as "}
-      <Blue>{user.email}</Blue>
-    </Message>
-  ) : (
-    <Redirect to="/login" />
-  )
+  user.uid ? <OrgSelector /> : <Redirect to="/login" />
 
 Home.propTypes = {
   user: PropTypes.shape({}).isRequired,
