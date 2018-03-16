@@ -7,7 +7,7 @@ import {
 } from 'reactstrap'
 import { connect } from 'react-redux'
 
-import { getUserOrgs } from '../actions/user'
+import { getUserOrgs, setCurrentOrg } from '../actions/user'
 
 class OrgSelector extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class OrgSelector extends Component {
   }
 
   componentDidMount = () => {
-    this.props.loadOrgs()
+    this.props.getUserOrgs()
   }
 
   toggle() {
@@ -26,7 +26,7 @@ class OrgSelector extends Component {
 
   orgsDropItems = orgs =>
     orgs.map(org => (
-      <DropdownItem onClick={this.props.setCurrentOrg(org)}>
+      <DropdownItem key={org.uid} onClick={e => this.props.setCurrentOrg(org)}>
         {org.name}
       </DropdownItem>
     ))
@@ -48,8 +48,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  loadOrgs: () => dispatch(getUserOrgs),
-  setCurrentOrg: org => console.log(org),
+  getUserOrgs: () => dispatch(getUserOrgs),
+  setCurrentOrg: org => dispatch(setCurrentOrg(org)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrgSelector)
