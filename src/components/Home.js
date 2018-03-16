@@ -3,10 +3,16 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import OrgSelector from './OrgSelector'
+import TemplateSidebar from './TemplateSidebar'
 
 const Home = ({ user }) =>
-  user.uid ? <OrgSelector /> : <Redirect to="/login" />
+  user.uid ? (
+    <TemplateSidebar>
+      <div>Nothing here</div>
+    </TemplateSidebar>
+  ) : (
+    <Redirect to="/login" />
+  )
 
 Home.propTypes = {
   user: PropTypes.shape({}).isRequired,

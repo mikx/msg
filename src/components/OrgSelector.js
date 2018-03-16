@@ -35,8 +35,12 @@ class OrgSelector extends Component {
     const { orgs, currentOrg } = this.props
     return (
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>{currentOrg.name}</DropdownToggle>
-        <DropdownMenu>{this.orgsDropItems(orgs)}</DropdownMenu>
+        <DropdownToggle outline caret className="btn-block">
+          {currentOrg.name}
+        </DropdownToggle>
+        <DropdownMenu className="btn-block">
+          {this.orgsDropItems(orgs)}
+        </DropdownMenu>
       </Dropdown>
     )
   }
