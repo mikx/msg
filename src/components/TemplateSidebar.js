@@ -4,7 +4,9 @@ import { Container, Row, Col } from 'reactstrap'
 
 import Header from './Header'
 import OrgSelector from './OrgSelector'
-import Channels from './Channels'
+
+import ChannelsView from '../channels/ChannelsView'
+import ChannelsCtrl from '../channels/ChannelsCtrl'
 
 const Template = ({ children }) => (
   <div>
@@ -12,7 +14,7 @@ const Template = ({ children }) => (
       <Row>
         <Col sm="2">
           <OrgSelector />
-          <Channels />
+          <ChannelsCtrl View={ChannelsView} />
         </Col>
         <Col sm="10">{children}</Col>
       </Row>

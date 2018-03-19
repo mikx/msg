@@ -77,7 +77,9 @@
     "react-router-dom": "^4.1.1",
     "reactstrap": "^5.0.0-beta.2",
     "redux": "^3.7.1",
-    "redux-thunk": "^2.2.0"
+    "redux-observable": "^0.18.0",
+    "redux-thunk": "^2.2.0",
+    "rxjs": "^5.5.7"
   },
   "eslintConfig": {
     "env": {

@@ -2,13 +2,38 @@ import gql from 'graphql-tag'
 import client from '../apollo/client'
 import { actionTypes as types } from '../constants'
 
+// ==================================== orgs
+
 const ORGS_QUERY = gql`
-  query GetUserOrgsChannels {
+  query GetUserOrgs {
     userOrgs {
       uid
       name
     }
-    userAllOrgsChannels {
+  }
+`
+export const getUserOrgs = async dispatch => {
+  dispatch({ type: types.ORGS_REQUEST })
+  try {
+    const result = await client.query({ query: ORGS_QUERY })
+    const orgs = result.data.userOrgs
+
+    dispatch({
+      type: 'ORGS_SUCCESS',
+      data: { orgs },
+    })
+
+    dispatch(setCurrentOrg(orgs[0]))
+  } catch (err) {
+    dispatch({ type: 'ORGS_FAILURE', data: err })
+  }
+}
+
+// ==================================== channels
+
+const CHANNELS_QUERY = gql`
+  query GetOrgChannels($uid: String!) {
+    userSingleOrgChannels(orgUid: $uid) {
       uid
       name
       kind
@@ -16,39 +41,37 @@ const ORGS_QUERY = gql`
     }
   }
 `
-const channelGrouper = (acc, x) => {
-  const key = 'org_uid'
-  const arr = acc[x[key]] || (acc[x[key]] = [])
-  arr.push(x)
-  return acc
-}
 
-const asyncUserOrgsChannels = async dispatch => {
+export const getOrgChannels = uid => async dispatch => {
+  dispatch({ type: types.CHANNELS_REQUEST })
   try {
-    const result = await client.query({ query: ORGS_QUERY })
+    const result = await client.query({
+      query: CHANNELS_QUERY,
+      variables: { uid },
+    })
+    const channels = result.data.userSingleOrgChannels
     dispatch({
-      type: 'ORGS_SUCCESS',
-      data: {
-        orgs: result.data.userOrgs,
-        orgChannelsMap: result.data.userAllOrgsChannels.reduce(
-          channelGrouper,
-          {},
-        ),
-      },
+      type: 'CHANNELS_SUCCESS',
+      data: { channels },
     })
   } catch (err) {
-    dispatch({ type: 'ORGS_FAILURE', data: err })
+    dispatch({ type: 'CHANNELS_FAILURE', data: err })
   }
 }
 
-export const setCurrentOrg = org => (dispatch, getState) => {
+// ==================================== set current org
+
+export const setCurrentOrg = org => dispatch => {
   dispatch({
     type: types.SET_CURRENT_ORG,
-    data: org,
+    data: { currentOrg: org },
   })
+  dispatch(getOrgChannels(org.uid))
 }
 
-export const getUserOrgs = (dispatch, getState) => {
-  dispatch({ type: types.ORGS_REQUEST })
-  dispatch(asyncUserOrgsChannels)
+export const setCurrentChannel = channel => dispatch => {
+  dispatch({
+    type: types.SET_CURRENT_CHANNEL,
+    data: { currentChannel: channel },
+  })
 }

@@ -19,14 +19,26 @@ const user = (state = defaultState, action) => {
       return { ...state, error: action.data }
 
     case types.ORGS_SUCCESS:
-      const { orgs, orgChannelsMap } = action.data
-      return { ...state, orgs, currentOrg: orgs[0], orgChannelsMap }
+      const { orgs } = action.data
+      return { ...state, orgs }
 
     case types.ORGS_FAILURE:
       return { ...state, error: action.data }
 
+    case types.CHANNELS_SUCCESS:
+      const { channels } = action.data
+      return { ...state, channels }
+
+    case types.CHANNELS_FAILURE:
+      return { ...state, error: action.data }
+
     case types.SET_CURRENT_ORG:
-      return { ...state, currentOrg: action.data }
+      const { currentOrg } = action.data
+      return { ...state, currentOrg }
+
+    case types.SET_CURRENT_CHANNEL:
+      const { currentChannel } = action.data
+      return { ...state, currentChannel }
 
     default:
       return state

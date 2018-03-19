@@ -48,7 +48,7 @@ class OrgSelector extends Component {
 
 const mapStateToProps = state => ({
   orgs: state.user.orgs || [],
-  currentOrg: state.user.currentOrg,
+  currentOrg: state.user.currentOrg || { uid: '0', name: 'No Current Org' },
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
