@@ -13,7 +13,7 @@ const user = (state = defaultState, action) => {
       return { ...state, error: action.data }
 
     case types.SESSION_SUCCESS:
-      return { ...state, uid: action.data.uid || action.data.uuid }
+      return { ...state, uid: action.data.uid }
 
     case types.SESSION_FAILURE:
       return { ...state, error: action.data }

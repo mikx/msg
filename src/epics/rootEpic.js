@@ -1,14 +1,18 @@
 import { Observable } from 'rxjs'
 import { combineEpics } from 'redux-observable'
 
-import { actionTypes } from '../constants'
+import { actionTypes, urls } from '../constants'
 
 const myEpic = action$ =>
   action$
     .ofType(actionTypes.SESSION_SUCCESS)
-    .switchMapTo(Observable.interval(1000))
-    .take(3)
-    .map(i => ({ type: 'PONG', data: i }))
+    .switchMapTo(
+      Observable.webSocket({
+        url: urls.BASE_WS,
+        credentials: 'include',
+      }),
+    )
+    .map(msg => ({ type: 'PONG', data: msg }))
 
 const rootEpic = combineEpics(myEpic)
 

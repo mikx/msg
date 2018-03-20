@@ -6,8 +6,8 @@ export const signup = ({ email, password }) => dispatch => {
   callPost({
     url: urls.SIGNUP,
     body: { email, password },
-    success: types.SIGNUP_SUCCESS,
-    failure: types.SIGNUP_FAILURE,
+    success: data => dsp => dsp({ type: types.SIGNUP_SUCCESS, data: data }),
+    failure: data => dsp => dsp({ type: types.SIGNUP_FAILURE, data: data }),
     dispatch,
   })
 }
@@ -17,8 +17,8 @@ export const login = ({ email, password }) => dispatch => {
   callPost({
     url: urls.LOGIN,
     body: { email, password },
-    success: types.LOGIN_SUCCESS,
-    failure: types.LOGIN_FAILURE,
+    success: data => dsp => dsp({ type: types.LOGIN_SUCCESS, data: data }),
+    failure: data => dsp => dsp({ type: types.LOGIN_FAILURE, data: data }),
     dispatch,
   })
 }
@@ -31,8 +31,8 @@ export const loginWithCookies = () => (dispatch, getState) => {
   dispatch({ type: types.SESSION_REQUEST })
   callGet({
     url: urls.USER_UID,
-    success: types.SESSION_SUCCESS,
-    failure: types.SESSION_FAILURE,
+    success: data => dsp => dsp({ type: types.SESSION_SUCCESS, data: data }),
+    failure: data => dsp => dsp({ type: types.SESSION_FAILURE, data: data }),
     dispatch,
   })
 }

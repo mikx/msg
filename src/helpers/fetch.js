@@ -12,12 +12,12 @@ const request = async ({ method, url, body, success, failure, dispatch }) => {
     })
     if (response.ok) {
       const data = await response.json()
-      dispatch({ type: success, data })
+      dispatch(success(data))
     } else {
-      dispatch({ type: failure })
+      dispatch(failure(response.status))
     }
   } catch (e) {
-    dispatch({ type: failure })
+    dispatch(failure(e))
   }
 }
 
