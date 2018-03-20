@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { Container, Row, Col } from 'reactstrap'
 
 import Header from './Header'
-import OrgSelector from './OrgSelector'
 
+import OrgsView from '../channels/OrgsView'
+import OrgsCtrl from '../channels/OrgsCtrl'
 import ChannelsView from '../channels/ChannelsView'
 import ChannelsCtrl from '../channels/ChannelsCtrl'
 
@@ -13,7 +14,7 @@ const Template = ({ children }) => (
     <Container fluid>
       <Row>
         <Col sm="2">
-          <OrgSelector />
+          <OrgsCtrl View={OrgsView} />
           <ChannelsCtrl View={ChannelsView} />
         </Col>
         <Col sm="10">{children}</Col>

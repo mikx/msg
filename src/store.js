@@ -1,18 +1,20 @@
 import { createStore, compose, applyMiddleware } from 'redux'
+import { createEpicMiddleware } from 'redux-observable'
 import thunk from 'redux-thunk'
-import throttle from 'lodash/throttle'
 
 import rootReducer from './reducers'
+import rootEpic from './epics/rootEpic'
+
 import { loginWithCookies } from './actions'
-import { saveState, loadState } from './helpers'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const epicMiddleware = createEpicMiddleware(rootEpic)
 
 export const store = createStore(
   rootReducer,
   {},
-  composeEnhancers(applyMiddleware(thunk)),
+  composeEnhancers(applyMiddleware(thunk, epicMiddleware)),
 )
 
-//store.subscribe(throttle(() => saveState(store.getState()), 1000))
 store.dispatch(loginWithCookies())
