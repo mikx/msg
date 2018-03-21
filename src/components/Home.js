@@ -4,12 +4,14 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 import TemplateSidebar from './TemplateSidebar'
+
+import ChatCtrl from '../chat/ChatCtrl'
 import ChatView from '../chat/ChatView'
 
 const Home = ({ user }) =>
   user.uid ? (
     <TemplateSidebar>
-      <ChatView messages={[{ uid: 1, text: 'abc' }, { uid: 2, text: 'cde' }]} />
+      <ChatCtrl View={ChatView} />
     </TemplateSidebar>
   ) : (
     <Redirect to="/login" />

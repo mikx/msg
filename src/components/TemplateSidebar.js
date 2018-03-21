@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Container, Row, Col } from 'reactstrap'
 
-import Header from './Header'
+import { height100 } from './Styled'
 
 import OrgsView from '../channels/OrgsView'
 import OrgsCtrl from '../channels/OrgsCtrl'
@@ -11,7 +11,7 @@ import ChannelsCtrl from '../channels/ChannelsCtrl'
 
 const Template = ({ children }) => (
   <div>
-    <Container fluid>
+    <Container fluid className={height100}>
       <Row>
         <Col sm="2">
           <OrgsCtrl View={OrgsView} />

@@ -1,13 +1,19 @@
 import React from 'react'
-import { ListGroup, ListGroupItem, Badge } from 'reactstrap'
+import Scroll from 'react-scrollbar'
+
+import { height100 } from '../components/Styled'
 
 const ChatView = ({ messages }) => {
   const items = messages.map((m, idx) => (
-    <div className="text-left" key={m.uid}>
-      {m.text}
+    <div className="text-left" key={idx}>
+      {m.data.ts} - {m.data.text}
     </div>
   ))
-  return <div className="container-fluid ">{items}</div>
+  return (
+    <Scroll className={height100} contentClassName="content" horizontal={false}>
+      {items}
+    </Scroll>
+  )
 }
 
 export default ChatView

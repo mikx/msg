@@ -22,3 +22,5 @@ export const SET_CURRENT_ORG = 'SET_CURRENT_ORG'
 export const SET_CURRENT_CHANNEL = 'SET_CURRENT_CHANNEL'
 
 export const WS_CONNECT = 'WS_CONNECT'
+
+export const ADD_MESSAGE = 'ADD_MESSAGE'

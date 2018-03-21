@@ -1,5 +1,11 @@
 import styled from 'react-emotion'
 import { Link } from 'react-router-dom'
+import { css } from 'emotion'
+
+export const height100 = css`
+  border: 1px solid rgb(213, 213, 213);
+  height: 50vh;
+`
 
 export const Body = styled.div`
   text-align: center;
