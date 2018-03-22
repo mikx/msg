@@ -5,14 +5,13 @@ import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
 
 import Login from './Auth/Login'
 import Signup from './Auth/Signup'
-import Header from './Header'
+
 import Home from './Home'
 
 import { Body } from './Styled'
 
 const App = ({ user }) => (
   <Body>
-    <Header />
     <Switch>
       {user.uid && <Route path="/" component={Home} />}
       <Route path="/signup" component={Signup} />

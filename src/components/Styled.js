@@ -1,13 +1,14 @@
+import { css } from 'emotion'
 import styled from 'react-emotion'
 import { Link } from 'react-router-dom'
-import { css } from 'emotion'
 
-export const height100 = css`
-  border: 1px solid rgb(213, 213, 213);
-  height: 50vh;
+export const Wrapper = styled.div`
+  height: 100%;
+  overflow-y: scroll;
+  margin-bottom: 1rem;
 `
-
 export const Body = styled.div`
+  height: 100%;
   text-align: center;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `
@@ -16,36 +17,6 @@ export const Title = styled.h1`
   font-family: sans-serif;
   font-weight: 100;
   margin: 30px 30px 20px 30px;
-`
-
-const Github = styled.span`
-  vertical-align: middle;
-  padding: 6px 10px;
-  border: 1px solid rgb(213, 213, 213);
-  font-size: 14px;
-  font-weight: 400;
-  outline: none;
-  font-family: sans-serif;
-`
-
-export const GithubButton = styled(Github)`
-  border-radius: 3px 0 0 3px;
-  background: rgb(248, 248, 248);
-  &:hover {
-    background: rgb(238, 238, 238);
-  }
-`
-
-export const GithubCount = styled(Github)`
-  margin-left: -1px;
-  border-radius: 0 3px 3px 0;
-  width: 100px;
-`
-
-export const GithubLink = styled.a`
-  display: block;
-  text-decoration: none;
-  color: black;
 `
 
 export const Message = styled.h2`

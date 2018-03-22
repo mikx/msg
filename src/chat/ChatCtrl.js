@@ -10,7 +10,6 @@ class ChatCtrl extends Component {
 
   render = () => {
     const { View, messages } = this.props
-    console.log(messages.size)
     return <View messages={messages} />
   }
 

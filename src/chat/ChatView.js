@@ -1,7 +1,4 @@
 import React from 'react'
-import Scroll from 'react-scrollbar'
-
-import { height100 } from '../components/Styled'
 
 const ChatView = ({ messages }) => {
   const items = messages.map((m, idx) => (
@@ -10,9 +7,15 @@ const ChatView = ({ messages }) => {
     </div>
   ))
   return (
-    <Scroll className={height100} contentClassName="content" horizontal={false}>
+    <div
+      ref={el =>
+        el &&
+        el.lastChild &&
+        el.lastChild.scrollIntoView({ behavior: 'smooth' })
+      }
+    >
       {items}
-    </Scroll>
+    </div>
   )
 }
 

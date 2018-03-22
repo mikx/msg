@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
+import Header from '../Header'
+
 import { login } from '../../actions'
 
 import { FormTitle, FooterLink } from '../Styled'
@@ -17,6 +19,7 @@ const Login = ({ user, login }) => {
 
   return (
     <div>
+      <Header />
       <FormTitle>Login</FormTitle>
       <Form onSubmit={handleSubmit} />
       {user.uid && <Redirect to="/" />}
