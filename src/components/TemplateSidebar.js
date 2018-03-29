@@ -13,10 +13,13 @@ import ChannelsCtrl from '../channels/ChannelsCtrl'
 import ChatCtrl from '../chat/ChatCtrl'
 import ChatView from '../chat/ChatView'
 
+import ChatInputCtrl from '../chat/ChatInputCtrl'
+import ChatInputView from '../chat/ChatInputView'
+
 import { Wrapper } from '../components/Styled'
 
 const TemplateSidebar = props => (
-  <Container className="container-fluid h-100 d-flex flex-column">
+  <Container className="container-fluid h-100 d-flex flex-column pb-3">
     <Header />
     <Row className="h-100">
       <Col sm="3">
@@ -29,7 +32,7 @@ const TemplateSidebar = props => (
           <Wrapper>
             <ChatCtrl View={ChatView} />
           </Wrapper>
-          <Alert color="primary">bottom</Alert>
+          <ChatInputCtrl View={ChatInputView} />
         </div>
       </Col>
     </Row>

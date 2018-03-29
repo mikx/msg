@@ -14,7 +14,7 @@ const request = async ({ method, url, body, success, failure, dispatch }) => {
       const data = await response.json()
       dispatch(success(data))
     } else {
-      dispatch(failure(response.status))
+      dispatch(failure({ status: response.status }))
     }
   } catch (e) {
     dispatch(failure(e))

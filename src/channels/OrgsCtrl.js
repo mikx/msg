@@ -14,7 +14,7 @@ class OrgsCtrl extends Component {
     this.props.getUserOrgs()
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({ dropdownOpen: !this.state.dropdownOpen })
   }
 
