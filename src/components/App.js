@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
 
-import Login from './Auth/Login'
-import Signup from './Auth/Signup'
+import Login from './Login'
 
 import Home from './Home'
 
@@ -14,7 +13,6 @@ const App = ({ user }) => (
   <Body>
     <Switch>
       {user.uid && <Route path="/" component={Home} />}
-      <Route path="/signup" component={Signup} />
       <Route path="/login" component={Login} />
       <Redirect to="/login" />
     </Switch>
