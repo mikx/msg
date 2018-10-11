@@ -8,4 +8,5 @@ jobs:
       - checkout
       - run: |
           pwd
-          ls -la
+          ls -la /tmp
+          ls -la /tmp/app
