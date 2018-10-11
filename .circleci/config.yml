@@ -5,6 +5,7 @@ jobs:
       - image: mikx/sbt
     #working_directory: ~/repo
     steps:
+      - checkout
       - run: |
           pwd
           ls -la
